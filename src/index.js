@@ -10,24 +10,6 @@ function component() {
   return element;
 }
 
-const lunchTodoList = () => {
-  const headSection = document.createElement('div');
-  headSection.classList.add('head-section');
-  const headTitle = document.createElement('p');
-  headTitle.classList.add('head-title');
-  headTitle.innerText = `Today's To Do`;
-  headSection.appendChild(headTitle);
-  const headIcon = document.createElement('img');
-  headIcon.classList.add('head-img');
-  headIcon.src = '../assets/reset.png';
-  headIcon.alt = 'reload';
-  headIcon.id = 'headIcon';
-  headSection.appendChild(headIcon);
-  todo_div.appendChild(headSection);
 
-
-}
-
-lunchTodoList();
 
 document.body.appendChild(component());
