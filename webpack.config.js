@@ -1,11 +1,12 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
- module.exports = {
-   entry: {
-     index: './src/index.js',
-   },
-   devtool: 'inline-source-map',
-   devServer: {
+
+module.exports = {
+  entry: {
+    index: './src/index.js',
+  },
+  devtool: 'inline-source-map',
+  devServer: {
     contentBase: './dist',
   },
   plugins: [
@@ -13,12 +14,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
       template: './src/index.html',
     }),
   ],
-   output: {
-     filename: 'main.js',
-     path: path.resolve(__dirname, 'dist'),
-     clean: true,
-   },
-   module: {
+  output: {
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'dist'),
+    clean: true,
+  },
+  module: {
     rules: [
       {
         test: /\.css$/i,
@@ -26,7 +27,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
       },
     ],
   },
-  performance : {
-    hints : false,
-  }   
- };
+  performance: {
+    hints: false,
+  },
+};

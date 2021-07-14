@@ -1,4 +1,6 @@
+/*eslint-disable*/
 import _ from 'lodash';
+/* eslint-enable */
 import './style.css';
 
 const todolist = [
@@ -16,10 +18,10 @@ const todolist = [
     index: 3,
     description: 'Complete todo list project',
     completed: false,
-  }
+  },
 ];
 class TODOs {
-  constructor(){
+  constructor() {
     this.toDoList = [];
   }
 
@@ -31,33 +33,25 @@ class TODOs {
     this.toDoList = this.toDoList.filter((todo) => todo.id !== Number(id));
   }
 }
-
+/* eslint-disable */
 const todos = new TODOs();
+/* eslint-enable */
 
-// function component() {
-//   const element = document.createElement('div');
-
-//  // Lodash, now imported by this script
-//   element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-
-//   return element;
-// }
-// document.body.appendChild(component());
 const todoDiv = document.querySelector('.todos');
 const lunchTodoList = () => {
   todolist.forEach((todo) => {
     const li = document.createElement('li');
     li.classList.add('todo');
-    //create checkbox
+    // create checkbox
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     checkbox.checked = todo.completed;
     li.appendChild(checkbox);
-    //create description
+    // create description
     const desc = document.createElement('p');
     desc.innerText = todo.description;
     li.appendChild(desc);
     todoDiv.appendChild(li);
   });
-}
+};
 lunchTodoList();
