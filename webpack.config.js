@@ -10,11 +10,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Output Management',
+      template: './src/index.html',
     }),
   ],
    output: {
-     filename: '[name].bundle.js',
+     filename: 'main.js',
      path: path.resolve(__dirname, 'dist'),
      clean: true,
    },
@@ -26,4 +26,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
       },
     ],
   },
+  performance : {
+    hints : false,
+  }   
  };
