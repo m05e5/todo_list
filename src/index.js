@@ -42,15 +42,23 @@ const lunchTodoList = () => {
   todolist.forEach((todo) => {
     const li = document.createElement('li');
     li.classList.add('todo');
+    const liDiv = document.createElement('div');
+    liDiv.classList.add('li-div');
     // create checkbox
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     checkbox.checked = todo.completed;
-    li.appendChild(checkbox);
+    liDiv.appendChild(checkbox);
     // create description
     const desc = document.createElement('p');
     desc.innerText = todo.description;
-    li.appendChild(desc);
+    liDiv.appendChild(desc);
+    li.appendChild(liDiv);
+    // create 3 vertical dots
+    const dots = document.createElement('i');
+    dots.classList.add('fa');
+    dots.classList.add('fa-ellipsis-v');
+    li.appendChild(dots);
     todoDiv.appendChild(li);
   });
 };
