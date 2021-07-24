@@ -2,7 +2,11 @@
 import _ from 'lodash';
 import {updateStatus} from './status.js';
 import './style.css';
+import { todo, load } from './data.js';
 import { makeContainer, makeDrageable } from './dragDrop';
+import {
+  addActivity, antiShowAll, elimanateCompleteds, saveone, onfocus, offfocus, removeone,
+} from './addEditErase.js';
 /* eslint-enable */
 
 let todolist = [
@@ -27,7 +31,15 @@ if (localStorage.getItem('information') === null) {
 }
 class TODOs {
   constructor() {
-    this.toDoList = [];
+    this.toDoList = null;
+  }
+
+  setTodo(todolist) {
+    this.todo = todolist;
+  }
+
+  getTodo() {
+    return this.todo;
   }
 
   add(description, completed) {
@@ -84,6 +96,18 @@ const lunchTodoList = () => {
     chbox.addEventListener('change', updateStatus);
   });
 };
+
+const todoInput = document.getElementById('todo-input');
+todoInput.addEventListener('keydown', (e) => {
+
+  if (e.key === 'Enter') {
+    addActivity(todoInput.value);
+    antiShowAll(todoDiv);
+    const get = load();
+    todos.setTodo(get);
+    window.location.reload();
+  }
+}) 
 
 window.addEventListener('DOMContentLoaded', () => {
   if (localStorage.getItem('information')) {

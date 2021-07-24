@@ -11,7 +11,7 @@
 
 ## Live
 
-here (https://eroiyo.github.io/To-do-list/)
+here ()
 
 ## Getting Started
 
