@@ -1,5 +1,6 @@
+/*eslint-disable*/
 import { save, load } from './data.js';
-
+/* eslint-enable */
 const theBigList = document.querySelector('.todos');
 
 export function antiShowAll(element) {
@@ -53,7 +54,8 @@ export function saveone(element) {
 
 export function removeone(element) {
   const todolist = load();
-  const index = element.parentNode.parentNode.id;
+  const index = element.parentNode.id;
+  console.log(index);
   todolist.splice(index, 1);
   save(todolist);
   return todolist;
