@@ -60,4 +60,3 @@ export function removeone(element) {
   save(todolist);
   return todolist;
 }
-
