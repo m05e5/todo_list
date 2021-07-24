@@ -1,8 +1,6 @@
 let todov = 0;
 const defaultTodo = [];
 
-
-
 export function storageAvailable(type) {
   let storage;
   try {

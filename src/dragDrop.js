@@ -1,5 +1,6 @@
+/*eslint-disable*/
 import { save, load, compare } from './data.js';
-
+/* eslint-enable */
 const theBigList = document.querySelector('.todos');
 
 function getDragAfterElement(tdle, y) {
@@ -34,7 +35,6 @@ export function makeDrageable(element) {
     for (let i = 0; i < e.length; i += 1) {
       const otherId = parseInt(e[i].id, 10);
       newTodo[i] = todo[otherId];
-      console.log(newTodo);
       newTodo[i].index = i;
       e[i].id = [i];
     }

@@ -5,7 +5,6 @@ import './style.css';
 import { makeContainer, makeDrageable } from './dragDrop';
 /* eslint-enable */
 
-
 let todolist = [
   {
     index: 0,
@@ -65,7 +64,7 @@ const lunchTodoList = () => {
     const desc = document.createElement('p');
     desc.innerText = todo.description;
     liDiv.appendChild(desc);
-    checkbox.addEventListener('change', function() {
+    checkbox.addEventListener('change', function () {
       if (this.checked) {
         desc.classList.add('line');
       } else {
@@ -80,11 +79,10 @@ const lunchTodoList = () => {
     li.appendChild(dots);
     todoDiv.appendChild(li);
   });
-  const cbox = document.querySelectorAll('.checkbox'); 
+  const cbox = document.querySelectorAll('.checkbox');
   cbox.forEach((chbox) => {
     chbox.addEventListener('change', updateStatus);
   });
-
 };
 
 window.addEventListener('DOMContentLoaded', () => {
