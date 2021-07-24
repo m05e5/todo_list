@@ -5,7 +5,7 @@ import './style.css';
 import { todo, load } from './data.js';
 import { makeContainer, makeDrageable } from './dragDrop';
 import {
-  addActivity, antiShowAll, elimanateCompleteds, saveone, onfocus, offfocus, removeone,
+  addActivity, antiShowAll, elimanateCompleteds, saveone, removeone,
 } from './addEditErase.js';
 /* eslint-enable */
 
@@ -50,8 +50,9 @@ const lunchTodoList = () => {
     checkbox.checked = todo.completed;
     liDiv.appendChild(checkbox);
     // create description
-    const desc = document.createElement('p');
-    desc.innerText = todo.description;
+    const desc = document.createElement('input');
+    desc.value = todo.description;
+    desc.onchange = (() => { saveone(desc); });
     liDiv.appendChild(desc);
     checkbox.addEventListener('change', function () {
       if (this.checked) {

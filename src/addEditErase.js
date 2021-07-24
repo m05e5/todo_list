@@ -61,19 +61,3 @@ export function removeone(element) {
   return todolist;
 }
 
-export function onfocus(element, handle, trashcan) {
-  setTimeout(() => {
-    element.parentNode.parentNode.classList.add('focused');
-    element.classList.add('focused');
-    handle.classList.add('hidden');
-    trashcan.classList.remove('hidden');
-  }, 200);
-}
-export function offfocus(element, handle, trashcan) {
-  setTimeout(() => {
-    element.parentNode.parentNode.classList.remove('focused');
-    element.classList.remove('focused');
-    handle.classList.remove('hidden');
-    trashcan.classList.add('hidden');
-  }, 200);
-}
