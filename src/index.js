@@ -1,25 +1,30 @@
 /*eslint-disable*/
 import _ from 'lodash';
-/* eslint-enable */
+import {updateStatus} from './status.js';
 import './style.css';
+import { makeContainer, makeDrageable } from './dragDrop';
+/* eslint-enable */
 
-const todolist = [
+let todolist = [
   {
-    index: 1,
+    index: 0,
     description: 'wash the dishes',
     completed: false,
   },
   {
-    index: 2,
+    index: 1,
     description: 'clean my room',
-    completed: true,
+    completed: false,
   },
   {
-    index: 3,
+    index: 2,
     description: 'Complete todo list project',
     completed: false,
   },
 ];
+if (localStorage.getItem('information') === null) {
+  localStorage.setItem('information', JSON.stringify(todolist));
+}
 class TODOs {
   constructor() {
     this.toDoList = [];
@@ -38,14 +43,20 @@ const todos = new TODOs();
 /* eslint-enable */
 
 const todoDiv = document.querySelector('.todos');
+makeContainer(todoDiv);
 const lunchTodoList = () => {
   todolist.forEach((todo) => {
     const li = document.createElement('li');
+    makeDrageable(li);
     li.classList.add('todo');
+    li.classList.add('draggable');
+    li.id = todo.index;
+    li.draggable = true;
     const liDiv = document.createElement('div');
     liDiv.classList.add('li-div');
     // create checkbox
     const checkbox = document.createElement('input');
+    checkbox.classList.add('checkbox');
     checkbox.type = 'checkbox';
     checkbox.checked = todo.completed;
     liDiv.appendChild(checkbox);
@@ -53,6 +64,13 @@ const lunchTodoList = () => {
     const desc = document.createElement('p');
     desc.innerText = todo.description;
     liDiv.appendChild(desc);
+    checkbox.addEventListener('change', function () {
+      if (this.checked) {
+        desc.classList.add('line');
+      } else {
+        desc.classList.remove('line');
+      }
+    });
     li.appendChild(liDiv);
     // create 3 vertical dots
     const dots = document.createElement('i');
@@ -61,5 +79,21 @@ const lunchTodoList = () => {
     li.appendChild(dots);
     todoDiv.appendChild(li);
   });
+  const cbox = document.querySelectorAll('.checkbox');
+  cbox.forEach((chbox) => {
+    chbox.addEventListener('change', updateStatus);
+  });
 };
-lunchTodoList();
+
+window.addEventListener('DOMContentLoaded', () => {
+  if (localStorage.getItem('information')) {
+    todolist = JSON.parse(localStorage.getItem('information'));
+  } else {
+    localStorage.setItem(
+      'information',
+      JSON.stringify(todolist.sort((a, b) => +a.index - +b.index)),
+    );
+  }
+
+  lunchTodoList(todolist.sort((a, b) => +a.index - +b.index));
+});
